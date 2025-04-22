@@ -17,7 +17,7 @@ console.log(products)
 	<body>
 		<h1>Astro are we?</h1>
 		{products.map(({data}) => (
-		<a href={`/mona/product/${data.name}`}>
+		<a href={`/product/${data.name}`}>
 		<p>{data.name}</p>
 		</a>
 		<p>{data.price}.00</p>

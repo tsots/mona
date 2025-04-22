@@ -1,4 +1,8 @@
 ---
+import { getCollection } from "astro:content"
+
+const products = await getCollection('product')
+console.log(products)
 
 ---
 
@@ -11,6 +15,13 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Astro are we?</h1>
+		{products.map(({data}) => (
+		<a href={`/product/${data.name}`}>
+		<p>{data.name}</p>
+		</a>
+		<p>{data.price}.00</p>
+		<p>{data.description}</p>
+		))}
 	</body>
 </html>

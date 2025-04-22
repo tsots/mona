@@ -2,7 +2,10 @@
 import { getCollection } from "astro:content"
 
 const products = await getCollection('product')
-console.log(products)
+// console.log(products)
+
+const posts = await getCollection('marked')
+// console.log(posts)
 ---
 
 <html lang="en">
@@ -22,5 +25,17 @@ console.log(products)
 		<p>{data.price}.00.</p>
 		<p>{data.description}</p>
 		))}
+
+		<h1>Astro Posts are like this</h1>
+		{posts.map(({data})=>(
+			<p>
+				<a href={`/mona/posts/${data.title}`}>
+				{data.title}
+				</a>
+			</p>
+			<p>{data.description}</p>
+		))}
 	</body>
 </html>
+
+

@@ -1,0 +1,59 @@
+---
+import { render } from "astro:content";
+import {type CollectionEntry, getCollection} from "astro:content"
+export async function getStaticPaths () {
+  const posts = await getCollection("marked")
+  return posts.map((entry) => ({
+  params: {slug: entry.data.title},
+  props: entry,
+  }))
+}
+
+
+
+const data = Astro.props;
+// console.log(data)
+const { Content } = await render(data);
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    h1{
+     margin-block-start: 0 !important;
+     margin-block-end: 0;
+    }
+    p{
+     margin-block-start: 0em !important;
+     margin-block-end: 0em !important;
+    }
+    .content{
+      color: green;
+    }
+  </style>
+</head>
+<body>
+ <h1 class="heading">
+{data.data.title}  
+</h1> 
+<p>
+{data.data.description}
+</p>
+<p>
+{data.data.pubDate}
+</p>
+<div class="content">
+<Content />
+</div>
+</body>
+</html>

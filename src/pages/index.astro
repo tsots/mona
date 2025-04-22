@@ -2,7 +2,9 @@
 import { getCollection } from "astro:content"
 
 const products = await getCollection('product')
-console.log(products)
+// console.log(products)
+const prefix = import.meta.env.BASE_URL
+console.log(prefix)
 ---
 
 <html lang="en">
@@ -16,10 +18,10 @@ console.log(products)
 	<body>
 		<h1>Astro are we?</h1>
 		{products.map(({data}) => (
-		<a href={`/mona/product/${data.name}`}>
+		<a href={`${prefix}/product/${data.name}`}>
 		<p>{data.name}</p>
 		</a>
-		<p>{data.price}.00</p>
+		<p>{data.price}.00.</p>
 		<p>{data.description}</p>
 		))}
 	</body>

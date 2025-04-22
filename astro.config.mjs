@@ -1,8 +1,8 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tsots.github.io',
-  base: import.meta.env.VITE_BASE_PATH || '/mona',
+  site: "https://tsots.github.io",
+  base: import.meta.env.PROD ? "/mona " : "",
 });
